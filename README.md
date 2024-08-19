@@ -2,7 +2,41 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, go to https://support.google.com/cloud/answer/6158849?hl=en and follow the instructions to create a new project and get the client ID and secret.
+
+Then, set up .env file as below:
+
+```
+PORT=3000
+GOOGLE_CLIENT_ID="<from google cloud console>"
+GOOGLE_CLIENT_SECRET="<from google cloud console>"
+GOOGLE_OAUTH_URL=https://accounts.google.com/o/oauth2/v2/auth
+GOOGLE_ACCESS_TOKEN_URL=https://oauth2.googleapis.com/token
+GOOGLE_TOKEN_INFO_URL=https://oauth2.googleapis.com/tokeninfo
+GOOGLE_CALLBACK_URL=http://localhost:3000/api/oauth/google/callback
+```
+
+Then, install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+Then, install Redis:
+
+```bash
+brew install redis
+```
+
+Then, start Redis:
+
+```bash
+redis-server
+```
+
+Finally, run the development server:
 
 ```bash
 npm run dev
@@ -14,23 +48,10 @@ pnpm dev
 bun dev
 ```
 
+Or, to run tests
+
+```bash
+npm run test
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
