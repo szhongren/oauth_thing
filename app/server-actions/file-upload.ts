@@ -1,15 +1,14 @@
 "use server";
 
-import { createDriveService } from "../lib/utils";
-import Redis from "ioredis";
-import { NextResponse } from "next/server";
+import { createDriveService, getRedisClient } from "../lib/utils";
 import { Readable } from "stream";
 
 export async function uploadFile(formData: FormData) {
-  const redis = new Redis();
+  const redis = getRedisClient();
   const sessionString = await redis.get("session");
   if (!sessionString) {
-    return NextResponse.json({ message: "No session found" }, { status: 401 });
+    console.error("Session not found in Redis");
+    return;
   }
   const driveService = createDriveService(
     JSON.parse(sessionString).access_token

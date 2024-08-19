@@ -1,8 +1,8 @@
-import Redis from "ioredis";
+import { getRedisClient } from "@/app/lib/utils";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const redis = new Redis();
+  const redis = getRedisClient();
   const sessionString = await redis.get("session");
   if (!sessionString) {
     return NextResponse.json({ message: "No session found" }, { status: 404 });

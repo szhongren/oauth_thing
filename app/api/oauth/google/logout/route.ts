@@ -1,9 +1,8 @@
-import { redirect } from "next/navigation";
-import Redis from "ioredis";
 import { NextResponse } from "next/server";
+import { getRedisClient } from "@/app/lib/utils";
 
 export async function GET() {
-  const redis = new Redis();
+  const redis = getRedisClient();
   const sessionString = await redis.get("session");
   if (!sessionString) {
     return NextResponse.json({ message: "No session found" }, { status: 401 });

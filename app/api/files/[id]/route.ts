@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import Redis from "ioredis";
-import { createDriveService } from "../../../lib/utils";
+import { createDriveService, getRedisClient } from "../../../lib/utils";
 
 export async function DELETE(request: NextRequest, { params }) {
-  const redis = new Redis();
+  const redis = getRedisClient();
   const sessionString = await redis.get("session");
   if (!sessionString) {
     return NextResponse.json({ message: "No session found" }, { status: 401 });

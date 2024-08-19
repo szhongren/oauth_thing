@@ -52,21 +52,22 @@ export default function Dropdown({ item }) {
               Object.keys(item.exportLinks).map((key) => (
                 <a
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  href={item.exportLinks[key]}
+                  href={item.exportLinks[key] ?? "/#"}
                   target="_blank"
                   onClick={() => setIsOpen(false)}
+                  key={item.id}
                 >
                   {truncate(key.split("/")[1], 20)}
                 </a>
               ))
             ) : (
               <a
-                href={item.webContentLink}
+                href={item.webContentLink ?? "/#"}
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 target="_blank"
                 onClick={() => setIsOpen(false)}
               >
-                {truncate(item.mimeType.split("/")[1], 20)}
+                {truncate(item.mimeType?.split("/")[1] || "unknown", 20)}
               </a>
             )}
           </div>

@@ -6,7 +6,7 @@ export default function SignedInPanel() {
   const [activeTab, setActiveTab] = useState(0);
 
   const tabs = ["Files", "Upload"];
-  const content = [<Files></Files>, <Upload></Upload>];
+  const content = [<Files key={10}></Files>, <Upload key={20}></Upload>];
 
   return (
     <div className="w-full">

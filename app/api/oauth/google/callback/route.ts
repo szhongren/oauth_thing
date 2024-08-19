@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
-import Redis from "ioredis";
 import { NextRequest } from "next/dist/server/web/spec-extension/request";
+import { getRedisClient } from "@/app/lib/utils";
 
 export async function GET(request: NextRequest) {
   const code = request.nextUrl.searchParams.get("code");
@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
   });
 
   const access_token_data: any = await response.json();
-  const redis = new Redis();
+  const redis = getRedisClient();
 
   const { id_token } = access_token_data;
   const token_info_response = await fetch(
