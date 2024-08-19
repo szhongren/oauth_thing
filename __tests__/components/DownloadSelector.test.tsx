@@ -50,6 +50,4 @@ describe("DownloadSelector", () => {
     const dropdown = screen.queryByText("unknown");
     expect(dropdown).not.toBeInTheDocument();
   });
-
-  // Add more tests as needed...
 });

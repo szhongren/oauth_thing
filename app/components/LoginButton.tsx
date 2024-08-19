@@ -4,8 +4,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function LoginButton({ session, setSession }) {
-  const router = useRouter();
-
   if (session?.email) {
     return (
       <button
