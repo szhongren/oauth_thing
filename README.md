@@ -55,4 +55,6 @@ We are single user only at this moment, and the server is not stateless. If we w
 
 For the OAuth2 flow, there are libraries available but I chose to implement it from scratch to understand the flow better, and managed sessions manually with Redis as well. Would probably use a library in a production environment unless we need this much control.
 
+Only FE components are tested right now, tried some things but unable to mock out Redis for the backend tests. Would need to look into that more.
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
